@@ -14,10 +14,13 @@ let addMovie = (movie) => {
     allMovies.push(movie);
 
   
-    // Display the message when a new movie is added
-    const messageElement = document.createElement("p");
-    messageElement.textContent = message;
-    resultDiv.appendChild(messageElement);
+    // // Display the message when a new movie is added
+    // const resultDiv = document.getElementById("result");
+    // const messageElement = document.createElement("p");
+    // messageElement.textContent = "A new movie is added";
+    // resultDiv.appendChild(messageElement);
+
+    displayMovies("A new movie is added: ");
   
 
 }
@@ -31,13 +34,32 @@ let printMovies = (movies) => {
     totalMovies++;
 
     console.log(`Total number of movies: ${totalMovies}`);
+    });
 
-    const info = `Title: ${movie.title}, Rating: ${movie.rating}, Watched: ${movie.haveWatched}`;
-    const movieElement = document.createElement("p");
-    movieElement.textContent = info;
-    resultDivDiv.appendChild(movieElement);
-});
+    // const resultDiv = document.getElementById("result");
+    // allMovies.forEach((movie) => {
+    //     const movieInfo = `Title: ${movie.title}, Rating: ${movie.rating}, Watched: ${movie.haveWatched}`;
+    //     const movieElement = document.createElement("p");
+    //     movieElement.textContent = movieInfo;
+    //     resultDiv.appendChild(movieElement);
+    //   });
 }
+
+// Function to display the list of movies on the web page
+function displayMovies(message) {
+    const resultDiv = document.getElementById("result");
+    const messageElement = document.createElement("p");
+    messageElement.textContent = message;
+    resultDiv.appendChild(messageElement);
+  
+    allMovies.forEach((movie) => {
+      const movieInfo = `Title: ${movie.title}, Rating: ${movie.rating}, Watched: ${movie.haveWatched}`;
+      const movieElement = document.createElement("p");
+      movieElement.textContent = movieInfo;
+      resultDiv.appendChild(movieElement);
+    });
+  }
+  
 
 
 //Display only the movies that has a rating higher than rating(argument)
