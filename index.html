@@ -6,24 +6,56 @@
     <title>Movie Management System</title>
     <style>
         h1 {
-            color: lightblue;
+            font-family: sans-serif;
+            font-size: 2.5rem;
+            font-weight: bold;
+            text-align: center;
+            margin-top: 0;
+            margin-bottom: 0.5rem;
+            color: rgb(20, 209, 149);
+        }
+
+        h4 {
+            font-family: sans-serif;
+            font-size: 1.5rem;
+            font-weight: bold;
+            text-align: left;
+            margin-top: 1.3rem;
+            margin-bottom: 0.5rem;
+            color: rgb(20, 209, 149);
         }
         
         p {
-            color: green;
+            color: rgb(1, 76, 78);
+            font-family: sans-serif;
+            font-size: 1.rem;
+            font-weight: bold;
+            text-align: left;
+            margin-top: 1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        line {
+            color: rgb(20, 202, 209);
+            font-family: sans-serif;
+            font-size: 2.rem;
         }
         
         #result {
-            background-color: lightblue;
-            padding: 10px;
+            background-color: rgb(229, 254, 249);
+            padding: 1rem;
+            border: 1px solid rgb(20, 202, 209);
+            border-radius: 0.25rem;
         }
+
     </style>
 </head>
 
 <body>
     <h1>Movie Management System</h1>
-    <p>Please look at the console</p>
     <div id="result"></div>
-    <script src="script.js"> </script>
+    <script src="script.js"> window.onload = function() {
+        printMovies();
+      }; </script>
 </body>
 </html>

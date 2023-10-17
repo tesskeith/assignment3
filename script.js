@@ -1,5 +1,9 @@
 let allMovies = [];
 
+
+
+const moviesElement = document.querySelector("#result");
+
 //Define a movie class with parameters title (string), rating (number) and haveWatched (boolean)
 class Movie {
     constructor(title, rating, haveWatched) {
@@ -12,15 +16,7 @@ class Movie {
 //add a movie OBJECT to the allMovies array
 let addMovie = (movie) => {
     allMovies.push(movie);
-
-  
-    // // Display the message when a new movie is added
-    // const resultDiv = document.getElementById("result");
-    // const messageElement = document.createElement("p");
-    // messageElement.textContent = "A new movie is added";
-    // resultDiv.appendChild(messageElement);
-
-    displayMovies("A new movie is added: ");
+    subText("A new movie is added");
   
 
 }
@@ -28,37 +24,24 @@ let addMovie = (movie) => {
 //iterate through all elements of allMovies array
 //Display the total number of movies in allMovies array
 let printMovies = (movies) => {
-    let totalMovies = 0;
 
-    movies.forEach((movie) => {
-    totalMovies++;
+    subText("Printing all movies....");
 
-    console.log(`Total number of movies: ${totalMovies}`);
-    });
-
-    // const resultDiv = document.getElementById("result");
-    // allMovies.forEach((movie) => {
-    //     const movieInfo = `Title: ${movie.title}, Rating: ${movie.rating}, Watched: ${movie.haveWatched}`;
-    //     const movieElement = document.createElement("p");
-    //     movieElement.textContent = movieInfo;
-    //     resultDiv.appendChild(movieElement);
-    //   });
-}
-
-// Function to display the list of movies on the web page
-function displayMovies(message) {
-    const resultDiv = document.getElementById("result");
-    const messageElement = document.createElement("p");
-    messageElement.textContent = message;
-    resultDiv.appendChild(messageElement);
-  
-    allMovies.forEach((movie) => {
-      const movieInfo = `Title: ${movie.title}, Rating: ${movie.rating}, Watched: ${movie.haveWatched}`;
+    // Iterate through the allMovies array and print each movie to the webpage.
+    for (const movie of allMovies) {
+      // Create a new <p> element to display the movie.
       const movieElement = document.createElement("p");
-      movieElement.textContent = movieInfo;
-      resultDiv.appendChild(movieElement);
-    });
-  }
+  
+      // Set the text of the <p> element to the movie's title.
+      movieElement.textContent =  movie.title + ", Rating of: " + movie.rating + ", havewatched: " + movie.haveWatched;
+  
+      // Append the <p> element to the movies element on the HTML webpage.
+      moviesElement.appendChild(movieElement);
+    }
+
+    subText(`You have ${allMovies.length} movies in total`);
+
+}
   
 
 
@@ -66,15 +49,22 @@ function displayMovies(message) {
 //Display the total number of matches
 let highRatings = (rating) => {
     let matches = 0;
+    subText(`Printing movie that has a rating higher than ${rating}`);
 
     allMovies.forEach((movie) => {
         if(movie.rating > rating) {
-            matches++;
-        }
-    
-
-    console.log(`Total number of movies: ${matches}`);
-});
+         // Create a new <p> element to display the movie.
+        const movieElement = document.createElement("p");
+  
+        // Set the text of the <p> element to the movie's title.
+        movieElement.textContent = movie.title + " , Rating of: " + movie.rating + " , havewatched: " + movie.haveWatched;
+  
+        // Append the <p> element to the movies element on the HTML webpage.
+        moviesElement.appendChild(movieElement);
+                matches++;
+        }   
+    });
+    subText(`In total, there are ${matches} matches`);
 }
 
 
@@ -86,10 +76,40 @@ let changeWatched = (title) => {
           break; 
         }
     }
+
+    subText(`Changing the status of the movie....`);
 }
 
+function addLine() {
+    // Create a new <hr> element.
+    const lineElement = document.createElement("line");
+    // Set the text of the <p> element to the movie's title.
+    lineElement.textContent = "-  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  ";
+
+    // Append the <hr> element to the body of the HTML document.
+    moviesElement.appendChild(lineElement);
+  }
+
+  function subText(text) {
+    // Create a new <div> element.
+    const subtext = document.createElement("h4");
+    subtext.textContent = text;
+  
+    // Append the <div> element to the body of the HTML document.
+    moviesElement.appendChild(subtext);
+  }
 
 
+  function addText(text) {
+    // Create a new <div> element.
+    const divElement = document.createElement("div");
+  
+    // Set the text of the <div> element.
+    divElement.textContent = text;
+  
+    // Append the <div> element to the body of the HTML document.
+    moviesElement.appendChild(divElement);
+  }
 ////////////////////////////////////////////////////////////
 //Test code - DO NOT DELETE
 let x = new Movie("Spiderman", 3, true);
@@ -98,37 +118,44 @@ let z = new Movie("Zootopia", 4.5, true);
 
 allMovies.push(x,y,z);
 
+
+// Create a new <p> element to display the movie.
+const lines = document.createElement("p");
+  
+
 /*replace console.log with display on web page*/
-console.log("----------------");
-console.log("running program......");
-console.log("----------------");
+addLine();
+subText("Running program......");
+addLine();
 printMovies();
+
 
 
 let movie1 = new Movie("Parasite", 2, false);
 
 /*replace console.log with display on web page*/
-console.log("----------------");
+addLine();
 addMovie(movie1);
-console.log("----------------");
+addLine();
+moviesElement.appendChild(lines);
 
 
 
 changeWatched("Spiderman");
 /*replace console.log with display on web page*/
-console.log("----------------");
+addLine();
 
 printMovies();
 
 /*replace console.log with display on web page*/
-console.log("----------------");
+addLine();
 
 changeWatched("Spiderman");
 /*replace console.log with display on web page*/
-console.log("----------------");
+addLine();
 
 printMovies();
 /*replace console.log with display on web page*/
-console.log("----------------");
+addLine();
 
 highRatings(3.5);
